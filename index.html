@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Holy Grail Layout Positioning Explanation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: grid;
+      grid-template-areas: 
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+      grid-template-rows: 80px 1fr 50px;
+      grid-template-columns: 20% 1fr 20%;
+      height: 100vh;
+    }
+
+    header, nav, main, aside, footer {
+      padding: 15px;
+      color: white;
+    }
+
+    header {
+      background-color: #462255; /* Adobe color */
+      grid-area: header;
+      position: sticky;
+      top: 0;
+    }
+
+    nav {
+      background-color: #A26769; /* Adobe color */
+      grid-area: nav;
+      position: relative;
+      left: 5px;
+    }
+
+    main {
+      background-color: #D4A373; /* Adobe color */
+      grid-area: main;
+      position: static;
+    }
+
+    aside {
+      background-color: #6C584C; /* Adobe color */
+      grid-area: aside;
+      position: absolute;
+      top: 100px;
+      right: 10px;
+      width: 15%;
+    }
+
+    footer {
+      background-color: #9C6644; /* Adobe color */
+      grid-area: footer;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Header</h1>
+    <p>This header uses <strong>position: sticky</strong> with <code>top: 0</code>. It stays stuck to the top of the screen when scrolling starts, which helps the user keep context. It works well in layouts where the header should remain visible but not always fixed.</p>
+  </header>
+  
+  <nav>
+    <h2>Navigation</h2>
+    <p>This navigation bar uses <strong>position: relative</strong> and is moved slightly to the right using <code>left: 5px</code>. Relative positioning means it keeps its space in the layout, but we can visually shift it. This is useful for fine-tuning placement without breaking the layout flow.</p>
+  </nav>
+
+  <main>
+    <h2>Main Content</h2>
+    <p>The main section uses <strong>position: static</strong>, which is the default. It stays in the normal document flow. No offsets like top/left apply to static elements. It appears naturally in the center column defined by the grid.</p>
+  </main>
+
+  <aside>
+    <h2>Sidebar</h2>
+    <p>This sidebar uses <strong>position: absolute</strong> and is shifted down using <code>top: 100px</code> and to the right with <code>right: 10px</code>. It’s taken out of the document flow and placed exactly where specified. This allows it to "float" over other content if needed.</p>
+  </aside>
+
+  <footer>
+    <h2>Footer</h2>
+    <p>This footer uses <strong>position: fixed</strong> and stays pinned to the bottom of the screen with <code>bottom: 0</code>. It’s useful for site-wide footers that should always be accessible, but may overlap content if not spaced carefully.</p>
+  </footer>
+</body>
+</html>
